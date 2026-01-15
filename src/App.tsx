@@ -21,6 +21,11 @@ function OnboardingForm() {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full text-center space-y-6">
+          <img
+            src={import.meta.env.BASE_URL + 'snappy-logo.png'}
+            alt="Snappy"
+            className="h-12 mx-auto"
+          />
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle className="w-14 h-14 text-green-500" />
           </div>
@@ -50,6 +55,11 @@ function OnboardingForm() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
+          <img
+            src={import.meta.env.BASE_URL + 'snappy-logo.png'}
+            alt="Snappy"
+            className="h-12 mx-auto mb-3"
+          />
           <h1 className="text-2xl font-bold text-primary">Social Media Onboarding</h1>
           <p className="text-gray-500 text-sm mt-1">
             Let's get your business set up for success

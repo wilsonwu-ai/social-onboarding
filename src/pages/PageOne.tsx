@@ -1,6 +1,6 @@
 import { useFormContext } from '../context/FormContext';
 import { cuisineOptions } from '../types';
-import { Building2, Globe, Instagram, Facebook, Plus, X } from 'lucide-react';
+import { Building2, Globe, Instagram, Facebook, Plus, X, Sparkles, Play, Heart } from 'lucide-react';
 
 // TikTok icon component
 const TikTokIcon = () => (
@@ -70,8 +70,100 @@ export default function PageOne() {
     xhs: 'XHS (+$50)',
   };
 
+  // Sample content previews from @gosnappy.io
+  const sampleContent = [
+    {
+      id: 1,
+      type: 'video',
+      thumbnail: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&h=300&fit=crop',
+      views: '12.4K',
+    },
+    {
+      id: 2,
+      type: 'video',
+      thumbnail: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=300&fit=crop',
+      views: '8.7K',
+    },
+    {
+      id: 3,
+      type: 'video',
+      thumbnail: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=300&fit=crop',
+      views: '15.2K',
+    },
+    {
+      id: 4,
+      type: 'video',
+      thumbnail: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&h=300&fit=crop',
+      views: '6.9K',
+    },
+  ];
+
   return (
     <div className="space-y-8">
+      {/* VIP Welcome Section */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-secondary/30 to-primary/10 rounded-3xl p-6 md:p-8 mb-8">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary rounded-full blur-2xl" />
+
+        <div className="relative">
+          {/* Welcome Message */}
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles className="w-5 h-5 text-primary" />
+            <span className="text-sm font-medium text-primary uppercase tracking-wide">Welcome to the Snappy Family</span>
+          </div>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+            We're So Excited You're Here!
+          </h2>
+
+          <p className="text-gray-600 leading-relaxed mb-4 max-w-2xl">
+            You've made an incredible decision to elevate your brand's social presence, and we couldn't be more thrilled to partner with you on this journey.
+            In just a few minutes, you'll share your story with us — and we'll transform it into scroll-stopping content that brings new guests through your doors.
+          </p>
+
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <Heart className="w-4 h-4 text-red-400 fill-red-400" />
+            <span>Trusted by 500+ restaurants across North America</span>
+          </div>
+
+          {/* Content Preview */}
+          <div className="mt-6">
+            <p className="text-sm font-medium text-gray-700 mb-3">
+              Here's a taste of what we'll create together:
+            </p>
+            <div className="flex gap-3 overflow-x-auto pb-2">
+              {sampleContent.map((content) => (
+                <a
+                  key={content.id}
+                  href="https://instagram.com/gosnappy.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative flex-shrink-0 w-24 h-24 md:w-28 md:h-28 rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <img
+                    src={content.thumbnail}
+                    alt="Sample content"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute top-2 right-2">
+                    <Play className="w-4 h-4 text-white fill-white" />
+                  </div>
+                  <div className="absolute bottom-2 left-2 flex items-center gap-1">
+                    <span className="text-white text-xs font-medium drop-shadow-lg">{content.views}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <p className="text-xs text-gray-400 mt-2">
+              Follow us <a href="https://instagram.com/gosnappy.io" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@gosnappy.io</a> for more inspiration
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Form Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-primary mb-2">
           Let's Start with the Basics
@@ -312,13 +404,23 @@ export default function PageOne() {
 
             <div className="space-y-2">
               <label className="block text-sm text-gray-600">Preferred Username</label>
-              <input
-                type="text"
-                value={formData.preferredUsername}
-                onChange={(e) => updateFormData({ preferredUsername: e.target.value })}
-                placeholder="@yourbusiness"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary"
-              />
+              <p className="text-xs text-gray-400">Provide a backup option in case your first choice is taken</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  value={formData.preferredUsername}
+                  onChange={(e) => updateFormData({ preferredUsername: e.target.value })}
+                  placeholder="@yourbusiness (1st choice)"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary"
+                />
+                <input
+                  type="text"
+                  value={formData.preferredUsernameAlt}
+                  onChange={(e) => updateFormData({ preferredUsernameAlt: e.target.value })}
+                  placeholder="@yourbusiness2 (2nd choice)"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">

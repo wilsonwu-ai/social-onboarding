@@ -15,6 +15,7 @@ export interface FormData {
   hasExistingSocial: boolean | null;
   existingSocialAccounts: SocialMediaAccount[];
   preferredUsername: string;
+  preferredUsernameAlt: string;
   selectedPlatforms: ('instagram' | 'facebook' | 'tiktok' | 'xhs')[];
   wantsNewSocial: boolean;
 
@@ -39,11 +40,6 @@ export interface FormData {
   customAudience: string;
   coreMessage: string;
   businessStory: string;
-  currentSocialHandles: {
-    instagram: string;
-    facebook: string;
-    tiktok: string;
-  };
   accessPreference: 'credentials' | 'admin_access' | '';
   localCompetitors: string[];
 }
@@ -58,6 +54,7 @@ export const initialFormData: FormData = {
   hasExistingSocial: null,
   existingSocialAccounts: [],
   preferredUsername: '',
+  preferredUsernameAlt: '',
   selectedPlatforms: [],
   wantsNewSocial: false,
 
@@ -82,11 +79,6 @@ export const initialFormData: FormData = {
   customAudience: '',
   coreMessage: '',
   businessStory: '',
-  currentSocialHandles: {
-    instagram: '',
-    facebook: '',
-    tiktok: '',
-  },
   accessPreference: '',
   localCompetitors: ['', ''],
 };
