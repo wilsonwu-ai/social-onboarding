@@ -124,7 +124,7 @@ export default function PageOne() {
 
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
             <Heart className="w-4 h-4 text-red-400 fill-red-400" />
-            <span>Trusted by 500+ restaurants across North America</span>
+            <span>Trusted by over 4000+ restaurants across 5 countries</span>
           </div>
 
           {/* Content Preview */}
