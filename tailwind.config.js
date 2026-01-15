@@ -7,18 +7,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#B02990',
-        'primary-dark': '#8a1f70',
-        'primary-light': '#d43ab3',
-        secondary: '#EECFE3',
-        'secondary-dark': '#dba8cc',
-        'secondary-light': '#f5e4ef',
+        primary: {
+          DEFAULT: '#B02990',
+          foreground: '#FFFFFF',
+          dark: '#8a1f70',
+          light: '#d43ab3',
+        },
+        secondary: {
+          DEFAULT: '#EECFE3',
+          foreground: '#B02990',
+          dark: '#dba8cc',
+          light: '#f5e4ef',
+        },
+        background: '#FFFFFF',
+        foreground: '#1A1A1A',
+        muted: {
+          DEFAULT: '#F5F5F5',
+          foreground: '#6B7280',
+        },
+        border: '#E5E7EB',
+        input: '#E5E7EB',
+        ring: '#B02990',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         playfair: ['Playfair Display', 'serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         lora: ['Lora', 'serif'],
+      },
+      borderRadius: {
+        lg: '0.75rem',
+        md: '0.5rem',
+        sm: '0.25rem',
+        xl: '1rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem',
       },
       boxShadow: {
         'soft': '0 4px 20px rgba(176, 41, 144, 0.1)',
