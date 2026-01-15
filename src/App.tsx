@@ -73,10 +73,6 @@ function OnboardingForm() {
           <Navigation onSubmit={handleSubmit} />
         </div>
 
-        {/* Footer */}
-        <footer className="text-center mt-8 text-sm text-gray-400">
-          <p>Need help? Contact us at support@example.com</p>
-        </footer>
       </div>
     </div>
   );
