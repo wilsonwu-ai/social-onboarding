@@ -6,15 +6,28 @@ import PageOne from './pages/PageOne';
 import PageTwo from './pages/PageTwo';
 import PageThree from './pages/PageThree';
 import PageFour from './pages/PageFour';
-import { CheckCircle } from 'lucide-react';
+import { submitOnboardingForm } from './services/submissions';
+import { CheckCircle, AlertCircle } from 'lucide-react';
 
 function OnboardingForm() {
   const { currentStep, formData } = useFormContext();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      await submitOnboardingForm(formData);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -79,8 +92,16 @@ function OnboardingForm() {
             {currentStep === 4 && <PageFour />}
           </div>
 
+          {/* Error Message */}
+          {submitError && (
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-700">
+              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <span>{submitError}</span>
+            </div>
+          )}
+
           {/* Navigation */}
-          <Navigation onSubmit={handleSubmit} />
+          <Navigation onSubmit={handleSubmit} isSubmitting={isSubmitting} />
         </div>
 
       </div>
