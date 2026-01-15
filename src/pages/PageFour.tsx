@@ -1,13 +1,6 @@
 import { useFormContext } from '../context/FormContext';
 import { targetAudienceOptions } from '../types';
-import { Users, MessageCircle, BookOpen, Instagram, Facebook, Key, Building } from 'lucide-react';
-
-// TikTok icon component
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className || "w-5 h-5"}>
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
-  </svg>
-);
+import { Users, MessageCircle, BookOpen, Key, Building } from 'lucide-react';
 
 export default function PageFour() {
   const { formData, updateFormData } = useFormContext();
@@ -162,84 +155,11 @@ export default function PageFour() {
       <div className="p-6 bg-gradient-to-br from-secondary/30 to-secondary/10 rounded-2xl space-y-6">
         <div>
           <h2 className="text-xl font-bold text-primary mb-1">
-            Existing Presence & Market Research
+            Account Access & Market Research
           </h2>
           <p className="text-sm text-gray-600">
-            Help us understand your current digital footprint and competitive landscape
+            Help us manage your accounts and understand your competitive landscape
           </p>
-        </div>
-
-        {/* Current Social Handles */}
-        <div className="space-y-4">
-          <label className="font-semibold text-gray-700 flex items-center gap-2">
-            <span>Current Social Handles</span>
-            <span className="text-gray-400 text-sm font-normal">(if applicable)</span>
-          </label>
-          <p className="text-xs text-gray-500">
-            Please link your active social media pages
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm text-gray-600 flex items-center gap-2">
-                <Instagram className="w-4 h-4" /> Instagram
-              </label>
-              <input
-                type="url"
-                value={formData.currentSocialHandles.instagram}
-                onChange={(e) =>
-                  updateFormData({
-                    currentSocialHandles: {
-                      ...formData.currentSocialHandles,
-                      instagram: e.target.value,
-                    },
-                  })
-                }
-                placeholder="https://instagram.com/..."
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-primary text-sm bg-white"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm text-gray-600 flex items-center gap-2">
-                <Facebook className="w-4 h-4" /> Facebook
-              </label>
-              <input
-                type="url"
-                value={formData.currentSocialHandles.facebook}
-                onChange={(e) =>
-                  updateFormData({
-                    currentSocialHandles: {
-                      ...formData.currentSocialHandles,
-                      facebook: e.target.value,
-                    },
-                  })
-                }
-                placeholder="https://facebook.com/..."
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-primary text-sm bg-white"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm text-gray-600 flex items-center gap-2">
-                <TikTokIcon className="w-4 h-4" /> TikTok
-              </label>
-              <input
-                type="url"
-                value={formData.currentSocialHandles.tiktok}
-                onChange={(e) =>
-                  updateFormData({
-                    currentSocialHandles: {
-                      ...formData.currentSocialHandles,
-                      tiktok: e.target.value,
-                    },
-                  })
-                }
-                placeholder="https://tiktok.com/@..."
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-primary text-sm bg-white"
-              />
-            </div>
-          </div>
         </div>
 
         {/* Access & Credentials */}
