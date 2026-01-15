@@ -1,14 +1,16 @@
 import { useFormContext } from '../context/FormContext';
-import { ChevronLeft, ChevronRight, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Send, Loader2 } from 'lucide-react';
 
 interface NavigationProps {
   onSubmit?: () => void;
+  isSubmitting?: boolean;
 }
 
-export default function Navigation({ onSubmit }: NavigationProps) {
+export default function Navigation({ onSubmit, isSubmitting = false }: NavigationProps) {
   const { currentStep, nextStep, prevStep, isFirstStep, isLastStep } = useFormContext();
 
   const handleNext = () => {
+    if (isSubmitting) return;
     if (isLastStep && onSubmit) {
       onSubmit();
     } else {
@@ -39,9 +41,17 @@ export default function Navigation({ onSubmit }: NavigationProps) {
       <button
         type="button"
         onClick={handleNext}
-        className="flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-all shadow-soft hover:shadow-hover"
+        disabled={isSubmitting}
+        className={`flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-medium transition-all shadow-soft ${
+          isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-primary-dark hover:shadow-hover'
+        }`}
       >
-        {isLastStep ? (
+        {isSubmitting ? (
+          <>
+            <Loader2 className="w-5 h-5 animate-spin" />
+            <span>Submitting...</span>
+          </>
+        ) : isLastStep ? (
           <>
             <span>Submit</span>
             <Send className="w-5 h-5" />
